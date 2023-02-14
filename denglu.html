@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="imgs/favicon.ico" />
+    <title>小米账号-登录</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-size: 12px;
+            color: #999;
+        }
+
+        strong {
+            color: black;
+            font-size: 18px;
+        }
+
+        input {
+            outline: none;
+            width: 250px;
+            height: 30px;
+        }
+
+        .box {
+            width: 500px;
+            height: 500px;
+            margin: 100px auto;
+        }
+
+        .box .top em {
+            font-style: none;
+        }
+
+        .box>div {
+            margin: 50px 28px;
+        }
+
+        .last {
+            position: relative;
+        }
+
+        .last #eye {
+            position: absolute;
+            top: 11px;
+            right: 155px;
+            width: 20px;
+            height: 12px;
+            display: none;
+        }
+
+        .last #psw {
+            font-size: 16px;
+            color: black;
+        }
+
+        .box #denglu {
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            background-color: red;
+            color: white;
+            font-weight: 700;
+            font-size: 20px;
+            margin-left: 140px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <form class="box" autocomplete="off" action=""> <!-- autocomplete="off" 关闭历史记录  action点击登录后跳转到的页面-->
+        <!-- location.search  拿到跳转页面网址上?之后的 ?account=1656467387&password=1656467387a  account 和password 就是设置的name -->
+        <div class="top">
+            <strong>账号：</strong>
+            <input type="text" placeholder="请输入8-16位数字或字母" id="account" name="account"> <!-- 必须有name 否则不能提交 -->
+            <em></em>
+        </div>
+        <div class="last">
+            <strong>密码：</strong>
+            <input type="password" id="psw" name="password">
+            <lable>
+                <img src="imgs/close.png" alt="" id="eye">
+            </lable>
+        </div>
+        <input type="submit" id="denglu" value="立即登录"></input>
+    </form>
+    <script>
+        let flag2 = 0
+        const reg = /^[a-zA-Z0-9]{8,16}$/
+        const account = document.getElementById('account');
+        const remind = document.querySelector('em');
+        const psw = document.getElementById('psw');
+        const eye = document.getElementById('eye');
+        let flag = 0;
+        const denglu = document.getElementById('denglu')
+        const box = document.querySelector('.box')
+        account.onblur = function () {
+            if (reg.test(this.value)) {
+                flag2 = 1
+                remind.innerHTML = '√格式正确';
+                remind.style.color = 'green';
+            }
+            else {
+                flag2 = 0
+                remind.innerHTML = '×格式错误';
+                remind.style.color = 'red';
+            }
+        }
+        account.addEventListener('input', function () {
+            if (account.value) {
+                this.style.color = 'black';
+            }
+            else {
+                this.style.color = '#999';
+            }
+
+        })
+        psw.addEventListener('input', function () {
+            if (psw.value) {
+                eye.style.display = 'block'
+            }
+            else {
+                eye.style.display = 'none'
+            }
+        })
+        eye.onclick = function () {
+            if (flag == 0) {
+                psw.type = 'text';
+                eye.src = 'imgs/open.png';
+                flag = 1;
+            }
+            else {
+                psw.type = 'password';
+                eye.src = 'imgs/close.png';
+                flag = 0;
+            }
+        }
+        box.addEventListener('submit', function (e) {
+            e.preventDefault()
+            if (flag2 === 0) {
+                alert('请输入正确的账号');
+            }
+            else if (psw.value.length == 0) {
+                alert('请输入密码');
+            }
+            else {
+                location.href = 'index.html'
+            }
+        })
+
+    </script>
+</body>
+
+</html>

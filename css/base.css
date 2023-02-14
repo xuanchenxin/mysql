@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+li{
+    list-style: none;
+}
+img{
+    border: 0;
+    /*取消图片下面的空白缝隙*/
+    vertical-align: middle;
+}
+button{
+    cursor: pointer;
+}
+input{
+    outline: 0;
+}
+body{
+    font:12px/1.5 Microsoft YaHei,tahoma;
+    background-color: #fff;
+}
+.clearfix :after{
+    visibility: hidden;
+    clear: both;
+    display: block;
+    content: ".";
+    height: 0;
+}
+.clearfix{
+    *zoom:1
+}
+a{
+    text-decoration: none;
+    color:#757575;
+}
+a:hover{
+    color: #ff6900;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.w{
+    width: 1200px;
+    font-size: 12px;
+}

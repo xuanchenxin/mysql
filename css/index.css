@@ -1,0 +1,225 @@
+.header {
+    position: relative;
+    width: 100%;
+    height: 641px;
+    background: url(../imgs/index1.png) no-repeat top center;
+}
+
+.ak {
+    position: fixed;
+    top: 0px;
+    left: 0;
+    z-index: 100;
+    height: 65px;
+    width: 100%;
+    /* background-color: rgba(0,0,0,.85);  */
+    transition: all .5s ease;
+    /* 背景颜色淡入淡出 */
+}
+
+.nav {
+    width: 1440px;
+    height: 65px;
+    line-height: 65px;
+    margin: 0 auto;
+}
+
+.logo {
+    float: left;
+    height: 65px;
+    width: 250px;
+    background: url(../imgs/logo.png) no-repeat left center;
+}
+
+.logo a {
+    display: inline-block;
+    height: 65px;
+    width: 60px;
+    font-size: 0;
+}
+
+.nav ul li {
+    float: left;
+    padding-right: 40px;
+}
+
+.nav li a {
+    font-size: 14px;
+    color: #fff;
+}
+
+.nav ul li:first-child a {
+    color: #ff6900;
+}
+
+.nav li:hover a {
+    color: #ff6900;
+}
+
+.nav ol li {
+    float: left;
+    margin-left: 30px;
+    color: #fff;
+}
+
+.know,
+.buy {
+    position: absolute;
+    top: 250px;
+    width: 200px;
+    height: 300px;
+}
+
+.know a,
+.buy a {
+    display: inline-block;
+    width: 200px;
+    height: 300px;
+}
+
+.know {
+    left: 280px;
+}
+
+.buy {
+    left: 520px;
+}
+
+/* 轮播图开始 */
+/* 大盒子 */
+.lunbo {
+    position: relative;
+    overflow: hidden;
+    width: 1520px;
+    /*  图片的宽高 */
+    height: 641px;
+    margin: 10px auto;
+    /* 大盒子的位置 */
+}
+
+/* 盒子里的图片 */
+.lunbo .imgs {
+    position: absolute;
+    top: 0;
+    /* 定位用left实现左右移动 */
+    left: 0;
+    height: 100%;
+    /* 给ul设置四张图片的宽度，比父盒子宽，这样li图片浮动才能在一行 */
+    width: 4560px;
+    /* 图片+1张图片的宽度 */
+}
+
+.lunbo .imgs li {
+    float: left;
+}
+
+.lunbo .imgs li img {
+    width: 1520px;
+    /* 强制图片宽高 */
+    height: 641px;
+}
+
+/* 小圆点 */
+.lunbo .doted {
+    position: absolute;
+    cursor: pointer;
+    right: 666px;
+    bottom: 25px;
+}
+
+.lunbo .doted li {
+    float: left;
+    width: 110px;
+    height: 5px;
+    margin: 0 2px;
+    background-color: rgba(255, 255, 255, 1);
+    /* 没选中li的颜色 */
+}
+
+.lunbo .doted .current {
+    background-color: #ff6900;
+    /* 当前li的颜色 */
+}
+
+/* 左右翻页按钮 */
+.lunbo>a {
+    position: absolute;
+    cursor: pointer;
+    top: 310px;
+    /* 翻页按钮距离图片顶部的位置 */
+    width: 25px;
+    height: 30px;
+    line-height: 30px;
+    color: white;
+    font-weight: 700;
+    font-size: 30px;
+    /*  background-color:rgba(0,0,0,.3); */
+    text-align: center;
+}
+
+.lunbo .move_left {
+    left: 20px;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+.lunbo .move_right {
+    right: 20px;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+}
+
+/* 轮播结束 */
+
+.img4 {
+    position: relative;
+    width: 1520px;
+    height: 641px;
+    margin: 10px auto;
+}
+
+.img4 img {
+    width: 1520px;
+    height: 641px;
+}
+
+.imgs {
+    width: 1520px;
+    height: 641px;
+    margin: 10px auto;
+}
+
+.imgs img {
+    overflow: hidden;
+    width: 1520px;
+    height: 641px;
+}
+
+.imgs2 a img {
+    width: 758px;
+}
+
+.fanhui {
+    display: none;
+    position: fixed;
+    left: 50%;
+    margin-left: 500px;
+    top: 500px;
+    width: 42px;
+    height: 62px;
+    border-radius: 20%;
+    background-color: rgba(0, 0, 0, .1);
+}
+
+.fanhui a {
+    display: inline-block;
+    width: 42px;
+    height: 62px;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+}
+
+.fanhui a div {
+    font-family: 'icomoon';
+}
