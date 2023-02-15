@@ -186,8 +186,8 @@ let timerId = null  //定时器id
 const input = document.querySelector('input')
 let searchhid = document.querySelector('.search-hid')
 const btn = document.querySelector('.btn')
-input.addEventListener('input', function () {
-  clearTimeout(timerId)  //用户每次输入内容后清除之前的定时器
+input.addEventListener('keyup', function () {
+
   let keywords = this.value.trim()
   //判断用户是否输入内容 
   if (keywords.length <= 0) {
@@ -197,6 +197,7 @@ input.addEventListener('input', function () {
     if (obj[keywords]) { //有数据直接渲染   keywords是变量 不能obj.keywords
       searchhid.innerHTML = ''
       searchhid.innerHTML = obj[keywords]
+      searchhid.style.display = 'block'
     }
     else {
       //用户输入内容 调用函数 发送请求 渲染页面
@@ -209,13 +210,11 @@ input.addEventListener('input', function () {
 
 //根据用户输入的内容发起请求得到数据渲染到页面 函数
 function getList(kw) { //kw是用户在搜索框输入的内容
-
-
-
   $.ajax({
     url: 'https://suggest.taobao.com/sug?q=' + kw,
     dataType: 'jsonp',
     success: function (res) {
+      let k = input.value
       let content = res.result.map(function (item, index) {
         return `<p>${item[0]}</p>`
       })
@@ -229,10 +228,11 @@ function getList(kw) { //kw是用户在搜索框输入的内容
       searchhid.innerHTML = ''
       searchhid.innerHTML = content
 
-      //缓存  用户输入的内容和后台响应的数据分别为键和值  重复搜索就不会再发送请求
-      let k = input.value
-      obj[k] = content  //k是变量不能用obj.k
- 
+      if (k !== '') {
+        //缓存  用户输入的内容和后台响应的数据分别为键和值  重复搜索就不会再发送请求
+        obj[k] = content  //k是变量不能用obj.k
+        console.log(obj)
+      }
     }
   })
 }
@@ -240,6 +240,7 @@ function getList(kw) { //kw是用户在搜索框输入的内容
 
 //定义防抖函数  用户输入内容后0.5秒内没有再输入就发送请求 否则重新计时  减少请求次数
 function fangdou(kw) { //kw是用户输入的内容
+  clearTimeout(timerId)
   timerId = setTimeout(function () {
     getList(kw)  //kw是防抖函数传过来的
   }, 500)
